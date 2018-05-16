@@ -6,15 +6,44 @@
             <result name="success">index.jsp</result>
             <result name="error">login.jsp</result>
         </action>
+        <action name="register" class="userAction" method="registerUser">
+            <result name="success">registerSuccess.jsp</result>
+        </action>
+        <action name="getImage" class="userAction" method="getImage">
+            <result name="success" type="stream">  
+            <param name="contentType">image/jpeg</param>  
+            </result>  
+        </action>
         <action name="orginMatch" class="matchAction" method="orginMatch">
             <result name="success">success.jsp</result>
             <result name="error">login.jsp</result>
         </action>
-        <action name="getMatchByType" class="matchAction" method="getMatchByType">
-            <result name="success">showmatch.jsp</result>
-        </action>
         <action name="getMatchPaging" class="matchAction" method="getMatchPaging">
             <result name="success">showmatch.jsp</result>
+        </action>
+        <action name="selectMatchPaging" class="matchAction" method="selectMatchPaging">
+            <result name="success">showmatch.jsp</result>
+        </action>
+        <action name="joinMatch" class="matchAction" method="joinMatch">
+            <result name="success" type="redirectAction">getMatchPaging</result>
+        </action>
+         <action name="showUserInfo" class="infoAction" method="showUserInfo">
+            <result name="success">homepage_info.jsp</result>
+        </action>
+        <action name="loadTouxiang" class="infoAction" method="loadTouxiang">
+            <result name="success">homepage_info.jsp</result>
+        </action>
+          <action name="showTouxiang" class="infoAction" method="showTouxiang">
+            <result name="success">homepage_info.jsp</result>
+        </action>
+         <action name="getMatchPagingByMatchId" class="infoAction" method="getMatchPagingByMatchId">
+            <result name="success">homepage_myorigin.jsp</result>
+        </action>
+        <action name="getJoinMatchPaging" class="infoAction" method="getJoinMatchPaging">
+            <result name ="success">homepage_myjoin.jsp</result>
+        </action>
+         <action name="updateUserInfo" class="infoAction" method="updateUserInfo">
+            <result name="success" type="redirectAction">showUserInfo</result>
         </action>
     </package>
 </struts>    

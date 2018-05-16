@@ -12,11 +12,22 @@ public class UserService implements IUserService{
 		// TODO Auto-generated method stub		
 		return userdao.validate(logname, password);
 	}
+	@Override
+	public void saveUser(User user) {
+		// TODO Auto-generated method stub
+		userdao.saveUser(user);
+	}
+
 	public IUserDao getUserdao() {
 		return userdao;
 	}
 	public void setUserdao(IUserDao userdao) {
 		this.userdao = userdao;
 	}
-
+	@Override
+	public boolean existUser(String logname) {
+		// TODO Auto-generated method stub
+		return userdao.existUser(logname) ;
+	}
+	
 }

@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr><td  style="font-size:20px">登录名称:<Input name="logname" type=text style="width:200px;height:50px"></td></tr>
 <tr><td style="font-size:20px">输入密码:<Input type=password style="width:200px;height:50px"name="password"></td></tr>
 <tr><td style="font-size:20px">输验证码:<Input name="code" type=text style="width:200px;height:50px"></td></tr>
-<tr><td><div align="center"><img border=0 src="CheckImage"></div></td></tr>
+<tr><td><div align="center"><img border=0 src="getImage.action"></div></td></tr>
 </table>
  <Input style="font-size:20px"type=submit name="g" value="登陆">
  <Input style="font-size:20px"type=submit name="g" value="注册" onclick="register();">

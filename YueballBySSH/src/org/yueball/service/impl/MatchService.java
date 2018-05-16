@@ -9,9 +9,9 @@ import org.yueball.vo.Ballmatch;
 public class MatchService implements IMatchService{
     IMatchDao matchDao;
 	@Override
-	public void orginMatch(Ballmatch ballmatch) {
+	public void orginMatch(Ballmatch ballmatch,String mylogname,int match_id) {
 		// TODO Auto-generated method stub
-		matchDao.orginMatch(ballmatch);
+		matchDao.orginMatch(ballmatch ,mylogname, match_id);
 	}
 	@Override
 	public List getMatchByType(String type) {
@@ -25,13 +25,38 @@ public class MatchService implements IMatchService{
 		
 		return matchDao.getMatchPaging(type, currentPage, pageSize);
 	}
+	@Override
+	public void joinMatch(String logname,int matchId) {
+		// TODO Auto-generated method stub
+		matchDao.joinMatch(logname,matchId);
+	}
+	@Override
+	public List selectMatchPaging(String type, int limit, String difficulty, int currentPage, int pageSize) {
+		// TODO Auto-generated method stub
+		return matchDao.selectMatchPaging(type, limit, difficulty, currentPage, pageSize);
+	}
+	@Override
+	public int getTotalBySelect(String type, int limit, String difficulty) {
+		// TODO Auto-generated method stub
+		return matchDao.getTotalBySelect(type, limit, difficulty);
+	}
+	@Override
+	public Ballmatch getMatchById(int matchId) {
+		// TODO Auto-generated method stub
+		return matchDao.getMatchById(matchId);
+	}
+	
 	public IMatchDao getMatchDao() {
 		return matchDao;
 	}
 	public void setMatchDao(IMatchDao matchDao) {
 		this.matchDao = matchDao;
 	}
+	@Override
+	public int getMaxMatchId() {
+		// TODO Auto-generated method stub
+		return matchDao.getMaxMatchId();
+	}
 	
-
-
+	
 }

@@ -22,20 +22,13 @@ public class MatchAction extends ActionSupport implements ModelDriven<Ballmatch>
 		
 		Map  session =ActionContext.getContext().getSession();
 		if(session.get("user")!=null){		
-		   matchService.orginMatch(ballmatch);			
+		   matchService.orginMatch(ballmatch,((User)session.get("user")).getLogname(),matchService.getMaxMatchId()+1);			
 			return SUCCESS;
 		}	
 			return ERROR;		
 	}
-	public String getMatchByType() {
-		List match = matchService.getMatchByType(ballmatch.getMatchType());
-		//System.out.println(ballmatch.getMatchType());
-		Map request=(Map) ActionContext.getContext().get("request");
-		request.put("match", match);	
-		return SUCCESS;	
-	}
 	public String getMatchPaging() {
-		System.out.println(ballmatch.getMatchType());
+		//System.out.println(ballmatch.getMatchType());
 		int totalSize=matchService.getMatchByType(ballmatch.getMatchType()).size();
 		Pager pager =new Pager(currentPage, totalSize);
 		List match= matchService.getMatchPaging(ballmatch.getMatchType(), currentPage, pager.getPageSize());
@@ -43,6 +36,22 @@ public class MatchAction extends ActionSupport implements ModelDriven<Ballmatch>
 		request.put("match", match);	
 		request.put("pager",pager);
 		return SUCCESS;
+	}
+	public String selectMatchPaging() {
+		int totalSize=matchService.getTotalBySelect(ballmatch.getMatchType(), ballmatch.getMatchLimit(), ballmatch.getMatchDifficulty());
+		System.out.println(ballmatch.getMatchLimit());
+		Pager pager =new Pager(currentPage, totalSize);
+		List  match=matchService.selectMatchPaging(ballmatch.getMatchType(), ballmatch.getMatchLimit(), ballmatch.getMatchDifficulty(), currentPage, pager.getPageSize());
+		Map request=(Map) ActionContext.getContext().get("request");
+		request.put("match", match);	
+		request.put("pager",pager);
+		return SUCCESS;
+	}
+	public String joinMatch(){
+		System.out.println(ballmatch.getMatchId());
+		Map  session =ActionContext.getContext().getSession();
+		matchService.joinMatch(((User)session.get("user")).getLogname(),ballmatch.getMatchId());
+		return SUCCESS;		
 	}
 	public IMatchService getMatchService() {
 		return matchService;

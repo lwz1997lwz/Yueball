@@ -30,7 +30,8 @@
 			<list>
 				<value>org/yueball/vo/User.hbm.xml</value>
 				<value>org/yueball/vo/Ballmatch.hbm.xml</value>
-				<value>org/yueball/vo/Myorigin.hbm.xml</value></list>
+				<value>org/yueball/vo/Myorigin.hbm.xml</value>
+				<value>org/yueball/vo/Touxiang.hbm.xml</value></list>
 		</property></bean>
 	<bean id="baseDao" class="org.yueball.dao.BaseDao">
 	    <property name="sessionFactory" ref="sessionFactory"></property>
@@ -47,6 +48,14 @@
 	    <property name="matchDao" ref="matchDao"></property>
 	</bean>
 	<bean id="matchAction" class="org.yueball.action.MatchAction">
+	    <property name="matchService" ref="matchService"></property>
+	</bean>
+    <bean id="infoDao" class="org.yueball.dao.impl.InfoDao" parent="baseDao"></bean>
+     <bean id="infoService" class="org.yueball.service.impl.InfoService">
+        <property name="infoDao" ref="infoDao"></property>
+    </bean>
+    <bean id="infoAction" class="org.yueball.action.InfoAction">
+	    <property name="infoService" ref="infoService"></property>
 	    <property name="matchService" ref="matchService"></property>
 	</bean>
 	<bean id="transactionManager"
