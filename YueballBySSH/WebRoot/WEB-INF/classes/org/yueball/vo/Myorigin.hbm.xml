@@ -6,18 +6,13 @@
 -->
 <hibernate-mapping>
     <class name="org.yueball.vo.Myorigin" table="myorigin" catalog="yueball">
-        <id name="mylogname" type="java.lang.String">
-            <column name="mylogname" length="50" />
-            <generator class="assigned" />
-        </id>
-        <property name="matchId" type="java.lang.Integer">
-            <column name="match_id" not-null="true" />
-        </property>
-        <set name="ballmatchs" inverse="false" cascade="save-update">
-            <key>
-                <column name="match_originator" length="50" />
-            </key>
-            <one-to-many class="org.yueball.vo.Ballmatch" />
-        </set>
+        <composite-id name="id" class="org.yueball.vo.MyoriginId">
+            <key-property name="mylogname" type="java.lang.String">
+                <column name="mylogname" length="50" />
+            </key-property>
+            <key-property name="matchId" type="java.lang.Integer">
+                <column name="match_id" />
+            </key-property>
+        </composite-id>
     </class>
 </hibernate-mapping>

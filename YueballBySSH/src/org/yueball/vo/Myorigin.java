@@ -1,7 +1,4 @@
- package org.yueball.vo;
-
-import java.util.HashSet;
-import java.util.Set;
+package org.yueball.vo;
 
 /**
  * Myorigin entity. @author MyEclipse Persistence Tools
@@ -11,9 +8,7 @@ public class Myorigin implements java.io.Serializable {
 
 	// Fields
 
-	private String mylogname;
-	private Integer matchId;
-	private Set ballmatchs = new HashSet(0);
+	private MyoriginId id;
 
 	// Constructors
 
@@ -21,41 +16,19 @@ public class Myorigin implements java.io.Serializable {
 	public Myorigin() {
 	}
 
-	/** minimal constructor */
-	public Myorigin(Integer matchId) {
-		this.matchId = matchId;
-	}
-
 	/** full constructor */
-	public Myorigin(Integer matchId, Set ballmatchs) {
-		this.matchId = matchId;
-		this.ballmatchs = ballmatchs;
+	public Myorigin(MyoriginId id) {
+		this.id = id;
 	}
 
 	// Property accessors
 
-	public String getMylogname() {
-		return this.mylogname;
+	public MyoriginId getId() {
+		return this.id;
 	}
 
-	public void setMylogname(String mylogname) {
-		this.mylogname = mylogname;
-	}
-
-	public Integer getMatchId() {
-		return this.matchId;
-	}
-
-	public void setMatchId(Integer matchId) {
-		this.matchId = matchId;
-	}
-
-	public Set getBallmatchs() {
-		return this.ballmatchs;
-	}
-
-	public void setBallmatchs(Set ballmatchs) {
-		this.ballmatchs = ballmatchs;
+	public void setId(MyoriginId id) {
+		this.id = id;
 	}
 
 }

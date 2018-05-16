@@ -8,6 +8,9 @@
 
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/yueball">
 		</property>
@@ -31,7 +34,8 @@
 				<value>org/yueball/vo/User.hbm.xml</value>
 				<value>org/yueball/vo/Ballmatch.hbm.xml</value>
 				<value>org/yueball/vo/Myorigin.hbm.xml</value>
-				<value>org/yueball/vo/Touxiang.hbm.xml</value></list>
+				<value>org/yueball/vo/Touxiang.hbm.xml</value>
+				<value>org/yueball/vo/Checkmember.hbm.xml</value></list>
 		</property></bean>
 	<bean id="baseDao" class="org.yueball.dao.BaseDao">
 	    <property name="sessionFactory" ref="sessionFactory"></property>
@@ -44,8 +48,22 @@
 	    <property name="userService" ref="userService"></property>
 	</bean>
 	<bean id="matchDao" class="org.yueball.dao.impl.MatchDao" parent="baseDao"></bean>
-	<bean id="matchService" class="org.yueball.service.impl.MatchService">
+	<!-- 配置服务代理bean -->
+	<bean id="matchServiceProxy" class="org.yueball.service.impl.MatchService">
 	    <property name="matchDao" ref="matchDao"></property>
+	</bean>
+	<!-- 前置日志通知 -->
+	<bean id="logBeforeAdvice" class="org.yueball.service.impl.LogBeforeAdvice"></bean>
+	<bean id="matchService" class="org.springframework.aop.framework.ProxyFactoryBean">
+	  <property name="proxyInterfaces">
+			<value>org.yueball.service.IMatchService</value>
+		</property>
+		<property name="target" ref="matchServiceProxy"/>
+		<property name="interceptorNames">
+			<list>
+				<value>logBeforeAdvice</value>
+			</list>
+		</property>
 	</bean>
 	<bean id="matchAction" class="org.yueball.action.MatchAction">
 	    <property name="matchService" ref="matchService"></property>
