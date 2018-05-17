@@ -17,7 +17,6 @@ import org.yueball.service.IInfoService;
 import org.yueball.service.IMatchService;
 import org.yueball.util.Pager;
 import org.yueball.vo.Ballmatch;
-import org.yueball.vo.Checkmember;
 import org.yueball.vo.Touxiang;
 import org.yueball.vo.User;
 
@@ -72,19 +71,7 @@ public class InfoAction extends ActionSupport implements ModelDriven<User> {
 		}
 		return SUCCESS;
 	}
-	public String checkMemberPaging(){
-		Map session=ActionContext.getContext().getSession();
-		User user = (User) session.get("user");
-		int totalSize=infoService.getTotalCheckMember(user.getLogname());
-		Pager checkpager = new Pager(currentPage, totalSize);
-		//System.out.println("size=:"+infoService.getCheckMemberPaging(user.getLogname()));
-		List checkmember= infoService.getCheckMemberPaging(user.getLogname(),currentPage, checkpager.getPageSize());
-		Map request = (Map) ActionContext.getContext().get("request");
-		request.put("checkmember", checkmember);
-		request.put("checkpager", checkpager);
-		return SUCCESS;
-		
-	}
+
 	public String getJoinMatchPaging() {
 		Map session = ActionContext.getContext().getSession();
 		User user = (User) session.get("user");
@@ -131,7 +118,6 @@ public class InfoAction extends ActionSupport implements ModelDriven<User> {
 		}
 		return null;
 	}
-
 
 	@Override
 	public User getModel() {

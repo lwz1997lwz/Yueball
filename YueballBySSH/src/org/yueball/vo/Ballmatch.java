@@ -1,8 +1,5 @@
 package org.yueball.vo;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * Ballmatch entity. @author MyEclipse Persistence Tools
  */
@@ -12,15 +9,14 @@ public class Ballmatch implements java.io.Serializable {
 	// Fields
 
 	private Integer matchId;
+	private Myorigin myorigin;
 	private String matchType;
 	private String matchDate;
-	private String matchOriginator;
 	private String matchDifficulty;
 	private Integer matchLimit;
 	private String matchAddress;
 	private Integer matchJoinnum;
 	private String matchMess;
-	private Set checkmembers = new HashSet(0);
 
 	// Constructors
 
@@ -29,17 +25,16 @@ public class Ballmatch implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Ballmatch(String matchType, String matchDate, String matchOriginator, String matchDifficulty,
-			Integer matchLimit, String matchAddress, Integer matchJoinnum, String matchMess, Set checkmembers) {
+	public Ballmatch(Myorigin myorigin, String matchType, String matchDate, String matchDifficulty, Integer matchLimit,
+			String matchAddress, Integer matchJoinnum, String matchMess) {
+		this.myorigin = myorigin;
 		this.matchType = matchType;
 		this.matchDate = matchDate;
-		this.matchOriginator = matchOriginator;
 		this.matchDifficulty = matchDifficulty;
 		this.matchLimit = matchLimit;
 		this.matchAddress = matchAddress;
 		this.matchJoinnum = matchJoinnum;
 		this.matchMess = matchMess;
-		this.checkmembers = checkmembers;
 	}
 
 	// Property accessors
@@ -50,6 +45,14 @@ public class Ballmatch implements java.io.Serializable {
 
 	public void setMatchId(Integer matchId) {
 		this.matchId = matchId;
+	}
+
+	public Myorigin getMyorigin() {
+		return this.myorigin;
+	}
+
+	public void setMyorigin(Myorigin myorigin) {
+		this.myorigin = myorigin;
 	}
 
 	public String getMatchType() {
@@ -66,14 +69,6 @@ public class Ballmatch implements java.io.Serializable {
 
 	public void setMatchDate(String matchDate) {
 		this.matchDate = matchDate;
-	}
-
-	public String getMatchOriginator() {
-		return this.matchOriginator;
-	}
-
-	public void setMatchOriginator(String matchOriginator) {
-		this.matchOriginator = matchOriginator;
 	}
 
 	public String getMatchDifficulty() {
@@ -114,14 +109,6 @@ public class Ballmatch implements java.io.Serializable {
 
 	public void setMatchMess(String matchMess) {
 		this.matchMess = matchMess;
-	}
-
-	public Set getCheckmembers() {
-		return this.checkmembers;
-	}
-
-	public void setCheckmembers(Set checkmembers) {
-		this.checkmembers = checkmembers;
 	}
 
 }

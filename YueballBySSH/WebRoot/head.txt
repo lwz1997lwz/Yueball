@@ -16,7 +16,7 @@
                 <li id="快速发起"><a href="rapidlaunch.jsp">快速发起</a></li>
                 <li id="球类新闻"><a href="https://www.hupu.com/">球类新闻</a></li>
                 <li id="我的主页"><a href="myhomepage.jsp">我的主页</a></li>
-               <li id="退出登陆"><a href="login.jsp">退出登陆</a></li>    
+               <li id="退出登陆"><a href="exitServlet">退出登陆</a></li>    
             </ul>
         </nav>   
         < s:property value="#session.user.logname"/> 已登陆

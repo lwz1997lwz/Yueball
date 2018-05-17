@@ -21,7 +21,7 @@
                 <li><a href="showUserInfo.action"><font size="4">个人信息</a></li>
 		        <li><a href="getMatchPagingByMatchId.action">我的发布</a></li>
 		        <li><a href="getJoinMatchPaging.action">我的参加</a></li>
-		        <li><a href="checkMemberPaging.action">待我审核</a></li>
+		        <li><a href="">待我审核</a></li>
 		        <li><a href="">我的消息</a></li>
 
         	</ul>
