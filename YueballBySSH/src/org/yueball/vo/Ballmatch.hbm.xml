@@ -10,20 +10,20 @@
             <column name="match_id" />
             <generator class="native" />
         </id>
-        <many-to-one name="myorigin" class="org.yueball.vo.Myorigin" fetch="select">
-            <column name="match_originator" length="50" />
-        </many-to-one>
         <property name="matchType" type="java.lang.String">
             <column name="match_type" length="50" />
         </property>
         <property name="matchDate" type="java.lang.String">
             <column name="match_date" length="50" />
         </property>
+        <property name="matchOriginator" type="java.lang.String">
+            <column name="match_originator" length="50" />
+        </property>
         <property name="matchDifficulty" type="java.lang.String">
             <column name="match_difficulty" length="50" />
         </property>
-        <property name="matchLimit" type="java.lang.Integer">
-            <column name="match_limit" />
+        <property name="matchLimit" type="java.lang.String">
+            <column name="match_limit" length="50" />
         </property>
         <property name="matchAddress" type="java.lang.String">
             <column name="match_address" length="50" />

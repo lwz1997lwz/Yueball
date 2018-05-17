@@ -1,30 +1,28 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<head>
-<base href="<%=basePath%>">
-
-<title>My JSP 'showmatch.jsp' starting page</title>
-
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
-<!--
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>My JSP 'showmatch.jsp' starting page</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
-
-</head>
-<style>
+  </head>
+ <style>
 body {
 	background: url(image/fenye.jpg)
 }
@@ -52,10 +50,7 @@ body {
 	top: 100px;
 }
 </style>
-
 <Body bgcolor=#66FFAA>
-
-
 	<center>
 		<p>
 			<BR>
@@ -76,53 +71,42 @@ body {
 				<td width="150"><font color=blue>是否加入</font></td>
 			</tr>
 
-			<s:iterator value="#request['match']" var="match">
-				<tr>
-					<td><s:property value="#match.matchType" /></td>
-					<td><s:property value="#match.matchDate" /></td>
-					<td><s:property value="#match.matchOriginator" /></td>
-					<td><s:property value="#match.matchLimit" /></td>
-					<td><s:property value="#match.matchJoinnum" /></td>
-					<td><s:property value="#match.matchAddress" /></td>
-					<td><s:property value="#match.matchDifficulty" /></td>
-					<td><s:property value="#match.matchMess" /></td>
-					<td>
-						<form action="joinMatch.action" method="post">
-							<input type="hidden" name="matchId" value="<s:property value="#match.matchId" />">
-							<input type="submit" id="joinMatchButton" value="是否加入"
-								 onclick="javaScript:alert('您确定要参加吗？')">
-						</form>
-					</td>
-				</tr>
-			</s:iterator>
+		<s:iterator value="#request['match']" var="match">
+			<tr>
+			<td><s:property value="#match.matchType" /></td>
+			<td><s:property value="#match.matchDate" /></td>
+            <td><s:property value="#match.matchOriginator" /></td>
+            <td><s:property value="#match.matchLimit" /></td>
+            <td><s:property value="#match.matchJoinnum" /></td>
+            <td><s:property value="#match.matchAddress" /></td>
+			<td><s:property value="#match.matchDifficulty" /></td>
+			<td><s:property value="#match.matchMess" /></td> 
+            </tr>
+		</s:iterator>
 		</table>
 		<BR>
-		<div>
-		<s:set value="#request.pager" var="pager"></s:set>
-		<s:if test="#pager.hasFirst">
-			<a href="getMatchPaging.action?currentPage=1"> 首页</a>
-		</s:if>
-		<s:if test="#pager.hasPrevious">
-			<a
-				href="getMatchPaging.action?currentPage=<s:property value="#pager.currentPage-1"/>">
-				上一页 </a>
-		</s:if>
-		<s:if test="#pager.hasNext">
-			<a
-				href="getMatchPaging.action?currentPage=<s:property value="#pager.currentPage+1"/>">
-				下一页 </a>
-		</s:if>
-		<s:if test="#pager.hasLast">
-			<a
-				href="getMatchPaging.action?currentPage=<s:property value="#pager.totalPage"/>">
-				尾页 </a>
-		</s:if>
-		<br> 当前第
-		<s:property value="#pager.currentPage" />
-		页，总共
-		<s:property value="#pager.totalPage" />
-		页
-		</div>
+       <s:set value="#request.pager" var="pager"></s:set>
+       <s:if test="#pager.hasFirst">
+           <a href="getMatchPaging.action?currentPage=1"> 首页</a>
+       </s:if>
+           <s:if test="#pager.hasPrevious">
+					<a href="getMatchPaging.action?currentPage=<s:property value="#pager.currentPage-1"/>">
+						上一页
+					</a>
+		    </s:if>
+				<s:if test="#pager.hasNext">
+					<a href="getMatchPaging.action?currentPage=<s:property value="#pager.currentPage+1"/>">
+						下一页
+					</a>
+				</s:if>
+				<s:if test="#pager.hasLast">
+					<a href="getMatchPaging.action?currentPage=<s:property value="#pager.totalPage"/>">
+						尾页
+					</a>
+				</s:if>
+				<br>
+				当前第<s:property value="#pager.currentPage"/>页，总共<s:property value="#pager.totalPage"/>页
+			</div>
 		<div id="apDiv2">
 			<a href="skimmatch.jsp"><font size='5'>返回上一级</a>
 		</div>

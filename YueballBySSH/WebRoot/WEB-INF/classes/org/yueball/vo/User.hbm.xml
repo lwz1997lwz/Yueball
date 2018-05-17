@@ -6,13 +6,10 @@
 -->
 <hibernate-mapping>
     <class name="org.yueball.vo.User" table="user" catalog="yueball">
-        <id name="userid" type="java.lang.Integer">
-            <column name="userid" />
+        <id name="logname" type="java.lang.String">
+            <column name="logname" length="50" />
             <generator class="native" />
         </id>
-        <property name="logname" type="java.lang.String">
-            <column name="logname" length="50" not-null="true" />
-        </property>
         <property name="password" type="java.lang.String">
             <column name="password" length="50" />
         </property>

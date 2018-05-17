@@ -8,7 +8,6 @@ public class User implements java.io.Serializable {
 
 	// Fields
 
-	private Integer userid;
 	private String logname;
 	private String password;
 	private String phone;
@@ -22,14 +21,8 @@ public class User implements java.io.Serializable {
 	public User() {
 	}
 
-	/** minimal constructor */
-	public User(String logname) {
-		this.logname = logname;
-	}
-
 	/** full constructor */
-	public User(String logname, String password, String phone, String qq, String school, String realname) {
-		this.logname = logname;
+	public User(String password, String phone, String qq, String school, String realname) {
 		this.password = password;
 		this.phone = phone;
 		this.qq = qq;
@@ -38,14 +31,6 @@ public class User implements java.io.Serializable {
 	}
 
 	// Property accessors
-
-	public Integer getUserid() {
-		return this.userid;
-	}
-
-	public void setUserid(Integer userid) {
-		this.userid = userid;
-	}
 
 	public String getLogname() {
 		return this.logname;

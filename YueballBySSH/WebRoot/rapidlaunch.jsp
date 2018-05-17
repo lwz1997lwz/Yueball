@@ -171,8 +171,7 @@ form#payment input[type=radio] {
 					name="matchDate" type="text"></li>
 				<li><label for="originator">发起人：</label> 
 				 <input id="originator" name="matchOriginator" type="tel"
-				 value="<s:property value='#session.user.logname'/>"
-					placeholder="< s:property value='#session.user.logname'/>"  required readonly="true"></li>
+					placeholder=" < s:property value='#session.user.logname'/>"  required readonly="true"></li>
 			</ol>
 		</fieldset>
 		<fieldset>
