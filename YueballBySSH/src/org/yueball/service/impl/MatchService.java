@@ -26,9 +26,9 @@ public class MatchService implements IMatchService{
 		return matchDao.getMatchPaging(type, currentPage, pageSize);
 	}
 	@Override
-	public void joinMatch(String logname,int matchId,String matchOriginator) {
+	public void joinMatch(String logname,int matchId) {
 		// TODO Auto-generated method stub
-		matchDao.joinMatch(logname,matchId,matchOriginator);
+		matchDao.joinMatch(logname,matchId);
 	}
 	@Override
 	public List selectMatchPaging(String type, int limit, String difficulty, int currentPage, int pageSize) {
@@ -45,11 +45,7 @@ public class MatchService implements IMatchService{
 		// TODO Auto-generated method stub
 		return matchDao.getMatchById(matchId);
 	}
-	@Override
-	public void agreeJoin(String logname, int matchId) {
-		// TODO Auto-generated method stub
-		matchDao.agreeJoin(logname, matchId);
-	}
+	
 	public IMatchDao getMatchDao() {
 		return matchDao;
 	}

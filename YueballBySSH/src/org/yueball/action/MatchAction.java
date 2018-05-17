@@ -47,18 +47,11 @@ public class MatchAction extends ActionSupport implements ModelDriven<Ballmatch>
 		request.put("pager",pager);
 		return SUCCESS;
 	}
-
 	public String joinMatch(){
-	
-		//System.out.println("发起者是："+ballmatch.getMatchOriginator());
+		System.out.println(ballmatch.getMatchId());
 		Map  session =ActionContext.getContext().getSession();
-		matchService.joinMatch(((User)session.get("user")).getLogname(),ballmatch.getMatchId(),ballmatch.getMatchOriginator());
+		matchService.joinMatch(((User)session.get("user")).getLogname(),ballmatch.getMatchId());
 		return SUCCESS;		
-	}
-	public String agreeJoin() {
-		Map  session =ActionContext.getContext().getSession();
-		matchService.agreeJoin(((User)session.get("user")).getLogname(), ballmatch.getMatchId());
-		return SUCCESS;
 	}
 	public IMatchService getMatchService() {
 		return matchService;

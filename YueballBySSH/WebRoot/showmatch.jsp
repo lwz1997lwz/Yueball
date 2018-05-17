@@ -89,7 +89,6 @@ body {
 					<td>
 						<form action="joinMatch.action" method="post">
 							<input type="hidden" name="matchId" value="<s:property value="#match.matchId" />">
-							<input type="hidden" name="matchOriginator" value="<s:property value="#match.matchOriginator"/>">
 							<input type="submit" id="joinMatchButton" value="是否加入"
 								 onclick="javaScript:alert('您确定要参加吗？')">
 						</form>

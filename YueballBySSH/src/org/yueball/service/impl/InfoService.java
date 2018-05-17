@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.yueball.dao.IInfoDao;
 import org.yueball.service.IInfoService;
-import org.yueball.vo.Checkmember;
 import org.yueball.vo.Touxiang;
 import org.yueball.vo.User;
 
@@ -42,17 +41,6 @@ public class InfoService implements IInfoService {
 		// TODO Auto-generated method stub
 		return infoDao.getTotaJoinlMatchIdByUserInfo(logname);
 	}
-	@Override
-	public List<Checkmember> getCheckMemberPaging(String logname,int currentPage, int pageSize) {
-		// TODO Auto-generated method stub
-		return infoDao.getCheckMemberPaging(logname,currentPage,pageSize);
-	}
-	@Override
-	public int getTotalCheckMember(String logname) {
-		// TODO Auto-generated method stub
-		return infoDao.getTotalCheckMember(logname);
-	}
-	
 	public void loadInfoTx(Touxiang touxiang,File image){
 	     infoDao.loadInfoTx(touxiang, image);
 	}
@@ -65,6 +53,5 @@ public class InfoService implements IInfoService {
 	public void setInfoDao(IInfoDao infoDao) {
 		this.infoDao = infoDao;
 	}
-	
 	
 }
