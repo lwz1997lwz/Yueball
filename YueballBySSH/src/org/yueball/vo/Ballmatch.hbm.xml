@@ -10,14 +10,14 @@
             <column name="match_id" />
             <generator class="native" />
         </id>
-        <many-to-one name="myorigin" class="org.yueball.vo.Myorigin" fetch="select">
-            <column name="match_originator" length="50" />
-        </many-to-one>
         <property name="matchType" type="java.lang.String">
             <column name="match_type" length="50" />
         </property>
         <property name="matchDate" type="java.lang.String">
             <column name="match_date" length="50" />
+        </property>
+        <property name="matchOriginator" type="java.lang.String">
+            <column name="match_originator" length="50" />
         </property>
         <property name="matchDifficulty" type="java.lang.String">
             <column name="match_difficulty" length="50" />
@@ -34,5 +34,11 @@
         <property name="matchMess" type="java.lang.String">
             <column name="match_mess" />
         </property>
+        <set name="checkmembers" inverse="true" >
+            <key>
+                <column name="check_matchid" />
+            </key>
+            <one-to-many class="org.yueball.vo.Checkmember" />
+        </set>
     </class>
 </hibernate-mapping>

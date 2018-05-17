@@ -27,6 +27,9 @@
         <action name="joinMatch" class="matchAction" method="joinMatch">
             <result name="success" type="redirectAction">getMatchPaging</result>
         </action>
+         <action name="agreeJoin" class="matchAction" method="agreeJoin">
+            <result name="success">homepage_checkmember.jsp</result>
+        </action>
          <action name="showUserInfo" class="infoAction" method="showUserInfo">
             <result name="success">homepage_info.jsp</result>
         </action>
@@ -41,6 +44,9 @@
         </action>
         <action name="getJoinMatchPaging" class="infoAction" method="getJoinMatchPaging">
             <result name ="success">homepage_myjoin.jsp</result>
+        </action>
+           <action name="checkMemberPaging" class="infoAction" method="checkMemberPaging">
+            <result name ="success">homepage_checkmember.jsp</result>
         </action>
          <action name="updateUserInfo" class="infoAction" method="updateUserInfo">
             <result name="success" type="redirectAction">showUserInfo</result>
